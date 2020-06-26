@@ -1,0 +1,337 @@
+// ブレークポイント
+$breakpoints: (
+  "sp": "screen and (max-width: 767px)",
+  "tab": "screen and (max-width: 1179px)",
+  "pc": "screen and (min-width: 1180px)",
+);
+
+// メディアクエリー
+@mixin mq($breakpoint: sp) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+// 共通パーツ
+
+$main-color: rgba(0, 0, 0, 0.64);
+$background-color: rgb(241, 243, 245);
+
+.inner {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+header,
+section,
+footer {
+  padding: 32px 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a,
+tr {
+  color: $main-color;
+  font-family: "Noto Sans JP", sans-serif;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.navbar,
+.section-title {
+  border-bottom: 1px solid $main-color;
+  letter-spacing: 1.6px;
+  padding: 8px;
+  display: flex;
+  align-items: baseline;
+  h4 {
+    padding-left: 16px;
+  }
+}
+
+.section-wrapper {
+  padding: 80px 0 32px 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.images {
+  padding: 16px;
+  img {
+    width: 100%;
+    border: 1px solid $main-color;
+    box-shadow: 0 0 1.6px $main-color;
+    height: 316px;
+    object-fit: cover;
+    object-position: top;
+    padding: 8px;
+  }
+  img:hover {
+    cursor: pointer;
+    padding: 6.4px;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .images {
+    margin: 8px 0;
+  }
+}
+
+// animation
+.fadeInDown {
+  -webkit-animation-fill-mode: both;
+  -ms-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1.6s;
+  -ms-animation-duration: 1.6s;
+  animation-duration: 1.6s;
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  visibility: visible !important;
+}
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+    -ms-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+// modal
+.modal-wrapper1,
+.modal-wrapper2,
+.modal-wrapper3,
+.modal-wrapper4,
+.modal-wrapper5,
+.modal-wrapper6 {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: $main-color;
+  z-index: 100;
+  display: none;
+  overflow-y: hidden;
+}
+
+// .modal-open{
+//   display: flex;
+//   justify-content: center;
+// }
+
+.modal1,
+.modal2,
+.modal3,
+.modal4,
+.modal5,
+.modal6 {
+  // display: flex;
+  // justify-content: center;
+  position: absolute;
+  // top: 8%;
+  // left: 34%;
+  width: 64%;
+  height: 80%;
+  text-align: center;
+  overflow-y: scroll;
+  // display: none;
+  img {
+    width: 80%;
+  }
+}
+
+.fa-times {
+  position: fixed;
+  right: 16%;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.scroll-btn {
+  position: fixed;
+  transform: rotate(90deg);
+  display: inline-block;
+  top: 48%;
+  color: #ffffff;
+}
+
+// MORE→
+.page-link {
+  display: flex;
+  justify-content: flex-end;
+}
+.arrow {
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+}
+
+// header
+
+.navbar > ul {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-item {
+  padding: 0 8px;
+}
+
+.to-top {
+  position: fixed;
+  right: 8px;
+  bottom: 8px;
+  z-index: 999;
+  :hover {
+    padding: 16px 0;
+    transition: 0.8s;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .navbar {
+    letter-spacing: 0.8px;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+// top
+.top-wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.top-right {
+  box-shadow: 0 0 0.8px $main-color;
+  img {
+    width: 100%;
+  }
+}
+
+.top-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  h1 {
+    padding: 56px 0;
+    letter-spacing: 2.4px;
+    font-weight: lighter;
+  }
+}
+
+// service
+
+// profile
+
+.profile-image {
+  img {
+    width: 100%;
+    box-shadow: 0 0 0.8px $main-color;
+  }
+}
+
+.profile-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  &-name {
+    padding: 0 0 32px 0;
+    letter-spacing: 1.6px;
+  }
+  &-introduction {
+    line-height: 32px;
+    text-align: justify;
+    text-justify: inter-ideograph;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .profile-text-name {
+    padding: 32px 0;
+    letter-spacing: 1.6px;
+  }
+}
+
+// recruit
+
+.recruit {
+  &-wrapper {
+    text-align: center;
+    padding: 80px 0 32px 0;
+    p {
+      margin: 16px 0;
+    }
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  &-text{
+    text-decoration: line-through;
+  }
+}
+
+.open-recruit {
+  display: inline-block;
+
+  border: 1px dashed $main-color;
+  a {
+    padding: 16px;
+    text-decoration: none;
+    display: inline-block;
+    text-decoration: line-through;
+  }
+  :hover {
+    background-color: $main-color;
+    transition: 0.48s;
+  }
+}
+
+// contact
+
+.contact-wrapper {
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+// footer
+
+.copyright-discription {
+  text-align: center;
+  font-size: 0.8em;
+}
